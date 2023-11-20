@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
 from PIL import Image, ImageTk
+import subprocess
 from tkcalendar import DateEntry  # Importa DateEntry de tkcalendar
 from tkinter import ttk
 
@@ -75,9 +76,11 @@ def restaurar_color(event):
 
 ##############FUNCION PARA ABRIR LA VENTANA DE RESERVA
 def abrir_ventana_reserva():
-    with open("/home/brama/Escritorio/ProyectoBD/pruebabd/reserva.py") as f:
-        
-        exec(f.read())
+    # Abre la ventana de registro
+    rutareserva = "/home/brama/Escritorio/AirportalPY/reserva.py"
+
+    # Abre el archivo de Python usando subprocess
+    subprocess.Popen(['python3', rutareserva])
 
 
    
@@ -101,23 +104,23 @@ marco_botones.pack(side=tk.TOP, fill=tk.X)
 
 
 ###########CARGAR LAS IMAGENES################33
-boton_vuelo = tk.PhotoImage(file="/home/brama/Escritorio/ProyectoBD/pruebabd/imagenes/logo.png").subsample(2,2)
+boton_vuelo = tk.PhotoImage(file="/home/brama/Escritorio/AirportalPY/imagenes/logo.png").subsample(2,2)
 label_logo = tk.Label(marco_botones, image=boton_vuelo)
 
 
 
-icono_vuelo = tk.PhotoImage(file="/home/brama/Escritorio/ProyectoBD/pruebabd/imagenes/iconoavion.png").subsample(9,9)
+icono_vuelo = tk.PhotoImage(file="/home/brama/Escritorio/AirportalPY/imagenes/iconoavion.png").subsample(9,9)
 label_iconovuelo = tk.Label(marco_botones, image=icono_vuelo)
 
 
-icono_reserva = tk.PhotoImage(file="/home/brama/Escritorio/ProyectoBD/pruebabd/imagenes/iconoreservar.png").subsample(9,9)
+icono_reserva = tk.PhotoImage(file="/home/brama/Escritorio/AirportalPY/imagenes/iconoreservar.png").subsample(9,9)
 label_iconoreservar = tk.Label(marco_botones, image=icono_reserva)
 
 
-icono_paseabordar = tk.PhotoImage(file="/home/brama/Escritorio/ProyectoBD/pruebabd/imagenes/iconopaseabordar.png").subsample(9,9)
+icono_paseabordar = tk.PhotoImage(file="/home/brama/Escritorio/AirportalPY/imagenes/iconopaseabordar.png").subsample(9,9)
 label_iconopaseabordar = tk.Label(marco_botones, image=icono_paseabordar)
 
-icono_estatusvuelo = tk.PhotoImage(file="/home/brama/Escritorio/ProyectoBD/pruebabd/imagenes/iconoestatusvuelo.png").subsample(9,9)
+icono_estatusvuelo = tk.PhotoImage(file="/home/brama/Escritorio/AirportalPY/imagenes/iconoestatusvuelo.png").subsample(9,9)
 label_iconoestatusvuelo = tk.Label(marco_botones, image=icono_estatusvuelo)
 
 ##LOGO DE LA PARTE IZQUIERDA SUPERIOR
@@ -201,6 +204,11 @@ boton4.bind("<Leave>", restaurar_color)
 
 
 
+
+
+
+
+
 # Añadir botones a la ventana
 boton1.grid(row=0, column=1, padx=10)
 boton2.grid(row=0, column=2, padx=10)
@@ -233,40 +241,64 @@ estados_destinos = {
 
 # Combobox de origen
 origen_combobox = ttk.Combobox(marco_adicional, values=estados_mexico, state="readonly")
-origen_combobox.set(estados_mexico[0])  # Establecer el origen predeterminado
-origen_combobox.pack(side=tk.LEFT, padx=10)
+origen_combobox.set(estados_mexico[0])
+origen_combobox.grid(row=0, column=0, padx=10, pady=10)
 
 # Combobox de destino
 destino_combobox = ttk.Combobox(marco_adicional, state="readonly")
-destino_combobox.set(estados_destinos[estados_mexico[0]][0])  # Establecer el destino predeterminado
-destino_combobox.pack(side=tk.LEFT, padx=10)
+destino_combobox.set(estados_destinos[estados_mexico[0]][0])
+destino_combobox.grid(row=0, column=1, padx=10, pady=10)
+
 
 # Configurar el evento <<ComboboxSelected>> para el Combobox de origen
 origen_combobox.bind("<<ComboboxSelected>>", actualizar_destinos)
 
 # Combobox de fechas de ida
 fecha_salida_label = tk.Label(marco_adicional, text="Fecha de Ida:")
-fecha_salida_label.pack(side=tk.LEFT, padx=10)
+fecha_salida_label.grid(row=1, column=0, padx=10, pady=10)
 fecha_salida_entry = DateEntry(marco_adicional, background='darkblue', foreground='white', borderwidth=2)
-fecha_salida_entry.pack(side=tk.LEFT, padx=10)
+fecha_salida_entry.grid(row=1, column=1, padx=10, pady=10)
 
 # Combobox de fechas de regreso
 fecha_regreso_label = tk.Label(marco_adicional, text="Fecha de Regreso:")
-fecha_regreso_label.pack(side=tk.LEFT, padx=10)
+fecha_regreso_label.grid(row=2, column=0, padx=10, pady=10)
 fecha_regreso_entry = DateEntry(marco_adicional, background='darkblue', foreground='white', borderwidth=2)
-fecha_regreso_entry.pack(side=tk.LEFT, padx=10)
+fecha_regreso_entry.grid(row=2, column=1, padx=10, pady=10)
 
 # Combobox de categoría de pasajeros
 categoria_pasajero_label = tk.Label(marco_adicional, text="Categoría de Pasajeros:")
-categoria_pasajero_label.pack(side=tk.LEFT, padx=10)
+categoria_pasajero_label.grid(row=3, column=0, padx=10, pady=10)
 categorias_pasajeros = ["Adulto (>13)", "Menor (2-12)", "Bebé (0-23 meses)"]
 categoria_pasajero_combobox = ttk.Combobox(marco_adicional, values=categorias_pasajeros, state="readonly")
-categoria_pasajero_combobox.set(categorias_pasajeros[0])  # Establecer la opción predeterminada
-categoria_pasajero_combobox.pack(side=tk.LEFT, padx=10)
+categoria_pasajero_combobox.set(categorias_pasajeros[0])
+categoria_pasajero_combobox.grid(row=3, column=1, padx=10, pady=10)
 
 
 
 
+
+
+
+
+
+
+# Combobox de origen
+origen_combobox.grid(row=0, column=0, padx=10, pady=10)
+
+# Combobox de destino
+destino_combobox.grid(row=0, column=1, padx=10, pady=10)
+
+# Combobox de fechas de ida
+fecha_salida_label.grid(row=1, column=0, padx=10, pady=10)
+fecha_salida_entry.grid(row=1, column=1, padx=10, pady=10)
+
+# Combobox de fechas de regreso
+fecha_regreso_label.grid(row=2, column=0, padx=10, pady=10)
+fecha_regreso_entry.grid(row=2, column=1, padx=10, pady=10)
+
+# Otros elementos adicionales restantes
+categoria_pasajero_label.grid(row=3, column=0, padx=10, pady=10)
+categoria_pasajero_combobox.grid(row=3, column=1, padx=10, pady=10)
 
 
 

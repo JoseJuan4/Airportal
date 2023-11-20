@@ -44,14 +44,19 @@ def iniciar_sesion():
 
 def registr():
     # Abre la ventana de registro
-    with open("/home/brama/Escritorio/ProyectoBD/pruebabd/registro.py") as f:
-        ventana.destroy()
-        exec(f.read())
+    rutaregistro = "/home/brama/Escritorio/AirportalPY/registro.py"
+
+    # Abre el archivo de Python usando subprocess
+    subprocess.Popen(['python3', rutaregistro])
+
 
 def menu():
     # Abre la ventana del menú
-    with open("/home/brama/Escritorio/ProyectoBD/pruebabd/menu.py") as f:
-        exec(f.read())
+    
+    rutamenu = "/home/brama/Escritorio/AirportalPY/menu.py"
+
+    # Abre el archivo de Python usando subprocess
+    subprocess.Popen(['python3', rutamenu])
 
 
 
