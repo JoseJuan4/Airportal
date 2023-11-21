@@ -55,7 +55,7 @@ registro.geometry("400x500+{}+{}".format(x, y))
 
 
 # Agregar el logo########################################
-logo_imagen = Image.open("/home/brama/pruebabd/imagenes/logo.png")  # Reemplaza "ruta_del_logo.png" con la ruta real de tu imagen
+logo_imagen = Image.open("imagenes/logo.png")  # Reemplaza "ruta_del_logo.png" con la ruta real de tu imagen
 logo_imagen = logo_imagen.resize((150, 100), Image.ANTIALIAS)  # Ajusta el tamaño del logo
 logo = ImageTk.PhotoImage(logo_imagen)
 logo_label = tk.Label(registro, image=logo)
@@ -63,7 +63,7 @@ logo_label.image = logo  # Mantener una referencia
 logo_label.pack(pady=10)
 
 # Cargar un logotipo
-logo_image = PhotoImage(file="/home/brama/pruebabd/imagenes/logo.png")
+logo_image = PhotoImage(file="imagenes/logo.png")
 
 # Crear la barra de menú
 menu_bar = tk.Menu(registro, font=("Helvetica", 16))
