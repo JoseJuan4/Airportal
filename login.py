@@ -44,7 +44,7 @@ def iniciar_sesion():
 
 def registr():
     # Abre la ventana de registro
-    rutaregistro = "/home/brama/Escritorio/AirportalPY/registro.py"
+    rutaregistro = "AIRPORTAL/registro.py"
 
     # Abre el archivo de Python usando subprocess
     subprocess.Popen(['python3', rutaregistro])
@@ -53,7 +53,7 @@ def registr():
 def menu():
     # Abre la ventana del menú
     
-    rutamenu = "/home/brama/Escritorio/AirportalPY/menu.py"
+    rutamenu = "AIRPORTAL/menu.py"
 
     # Abre el archivo de Python usando subprocess
     subprocess.Popen(['python3', rutamenu])
@@ -92,7 +92,7 @@ ventana.geometry("400x400+{}+{}".format(x, y))
 
 
 # Agregar el logo
-logo_imagen = Image.open("/home/brama/pruebabd/imagenes/logo.png")  # Reemplaza "ruta_del_logo.png" con la ruta real de tu imagen
+logo_imagen = Image.open("imagenes/logo.png")  # Reemplaza "ruta_del_logo.png" con la ruta real de tu imagen
 logo_imagen = logo_imagen.resize((150, 100), Image.ANTIALIAS)  # Ajusta el tamaño del logo
 logo = ImageTk.PhotoImage(logo_imagen)
 logo_label = tk.Label(ventana, image=logo)

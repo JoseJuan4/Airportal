@@ -3,7 +3,6 @@ from tkinter import messagebox
 import subprocess
 
 def opcion1():
-    messagebox.showinfo("screen", "llamada screen")
     abrir_otro_archivo()
 
 def opcion2():
@@ -18,7 +17,7 @@ def opcion5():
     messagebox.showinfo("screen", "llamada screen")
 
 def abrir_otro_archivo():
-    subprocess.run(["python", "login.py"])
+    subprocess.run(["python3","login.py"])
 
 # Crear la ventana principal
 ventana = tk.Tk()
